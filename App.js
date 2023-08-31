@@ -1,11 +1,11 @@
-import {StyleSheet} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './src/screen/HomeScreen';
 import QuizScreen from './src/screen/QuizScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import ProfileScreen from "./src/screen/ProfileScreen";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import ResultScreen from "./src/screen/ResultScreen";
+import AntDesign from "react-native-vector-icons/AntDesign";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -18,16 +18,16 @@ const HomeTab = () => (
 
                 if (route.name === 'HomeScreen') {
                     iconName = focused
-                        ? 'home'
-                        : 'home-outline';
+                        ? 'home-outline'
+                        : 'home-outline-circle';
 
                 } else if (route.name === 'Profile') {
                     iconName = focused ? 'people-circle' : 'people-circle-outline';
                 }
 
-                return <Ionicons name={iconName} size={size} color={color}/>;
+                return <AntDesign name={iconName} size={size} color={color}/>;
             },
-            tabBarActiveTintColor: 'tomato',
+            tabBarActiveTintColor: 'blue',
             tabBarInactiveTintColor: 'gray',
         })}
     >
@@ -47,7 +47,9 @@ const HomeStack = () => (
         <Stack.Screen name="QuizScreen" component={QuizScreen}
                       options={{
                           title: "Quiz",
-                      }}/>
+                      }}
+        />
+        <Stack.Screen name="ResultScreen" component={ResultScreen}/>
     </Stack.Navigator>
 
 );
@@ -59,12 +61,3 @@ export default function App() {
         </NavigationContainer>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});

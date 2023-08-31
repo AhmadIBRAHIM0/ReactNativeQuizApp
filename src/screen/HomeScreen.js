@@ -23,7 +23,7 @@ const HomeScreen = ({navigation}) => {
     const renderQuizItem = ({item}) => {
         return (
             <Pressable onPress={() => navigation.navigate('QuizScreen', {
-                article: item
+                questions: item.questions,
             })}>
                 <View style={styles.card}>
                     <Image source={{uri: item.image}} style={styles.quizImage}/>
